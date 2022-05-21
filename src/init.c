@@ -38,8 +38,10 @@ Wdw init_window_vec()
     w.vec.rect1.height = 600;
     w.vec.rec.left = 0;
     w.vec.rec.top = 0;
-    w.vec.rec.width = 800;
-    w.vec.rec.height = 600;
+    w.vec.rec.width = 1900;
+    w.vec.rec.height = 1167;
+    w.scale_tforeground.x = 1.5;
+    w.scale_tforeground.y = 1.5;
     sfVideoMode video_mode = {1900, 1167, 32};
     w.window = sfRenderWindow_create(video_mode, "candy-world", sfDefaultStyle | sfResize, NULL);
     w.tbackround = sfTexture_createFromFile("src.pics/Plan_de_travail_0.png", NULL);
@@ -50,6 +52,7 @@ Wdw init_window_vec()
     sfSprite_setTexture(w.sbackround, w.tbackround, 0);
     sfSprite_setTexture(w.sforeground, w.tforeground, 0);
     w.music = sfMusic_createFromFile("src.sounds/music_game.ogg");
+    sfSprite_scale(w.sforeground, w.scale_tforeground);
     return (w);
 }
 
@@ -59,7 +62,7 @@ png init()
     p.vecs.scale_png.x = 3;
     p.vecs.scale_png.y = 3;
     p.vecs.beginning.x = 50;
-    p.vecs.beginning.y = 480;
+    p.vecs.beginning.y = 800;
     p.vecs.run.left = 0;
     p.vecs.run.top = 70;
     p.vecs.run.width = 35;
@@ -71,7 +74,7 @@ png init()
     p.vecs.rec_enemy.height = 600;
     p.vecs.scale_enemy.x = 0.3;
     p.vecs.scale_enemy.y = 0.3;
-    p.vecs.begin_enemy.x = 600;
-    p.vecs.begin_enemy.y = 335;
+    p.vecs.begin_enemy.x = 2000;
+    p.vecs.begin_enemy.y = 750;
     return (p);
 }

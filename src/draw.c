@@ -30,8 +30,10 @@ void draw_wdw(Wdw w)
 {
     sfRenderWindow_drawSprite(w.window, w.sbackround, NULL);
     sfSprite_setTextureRect(w.sbackround, w.vec.rect1);
+
     sfRenderWindow_drawSprite(w.window, w.sforeground, NULL);
     sfSprite_setTextureRect(w.sforeground, w.vec.rec);
+
     for (int i = 10; (w.nb_score[i] - 1) == '9'; i--) {
         w.nb_score[i] = '0';
         w.nb_score[i - 1] = w.nb_score[i - 1] + 1;

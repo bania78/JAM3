@@ -32,9 +32,6 @@ void game(Wdw w, png p, start st);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 void move_enemy(sfIntRect *rect, int offset, int max_value);
 void param_menu_start(Wdw w, start st);
-
-
 void draw_wdw(Wdw w);
-
 
 #endif //MY_RUNNER_H
