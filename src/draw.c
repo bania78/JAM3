@@ -5,7 +5,7 @@
 ** draw
 */
 
-#include "include/my_runner.h"
+#include "../include/my_runner.h"
 
 void move_rect(sfIntRect *rect, int offset, int max_value)
 {
