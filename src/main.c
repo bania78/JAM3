@@ -19,10 +19,16 @@ sfVector2i events(Wdw w, sfVector2i i, start *st)
                 i.x = 1;
         }
         if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 500 && st->mouse_pos.y < 596) {
-            if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed) {
+            if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed)
                 st->rectsta = (sfIntRect){210, 0, 210, 96};
+            if (st->start == 0 && w.event.type == sfEvtMouseButtonReleased)
                 st->start = 1;
-            }
+        }
+        if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 650 && st->mouse_pos.y < 746) {
+            if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed)
+                st->rectqui = (sfIntRect){210, 0, 210, 96};
+            if (st->start == 0 && w.event.type == sfEvtMouseButtonReleased)
+                sfRenderWindow_close(w.window);
         }
     }
     return (i);
