@@ -40,11 +40,7 @@ Wdw init_window_vec()
     w.vec.rec.top = 0;
     w.vec.rec.width = 800;
     w.vec.rec.height = 600;
-<<<<<<< HEAD
     sfVideoMode video_mode = {1900, 1167, 32};
-=======
-    sfVideoMode video_mode = {800, 600, 64};
->>>>>>> 29cf1ae52f0059a793e775f64401cd278083f7cc
     w.window = sfRenderWindow_create(video_mode, "candy-world", sfDefaultStyle | sfResize, NULL);
     w.tbackround = sfTexture_createFromFile("src.pics/Plan_de_travail_0.png", NULL);
     w.sbackround = sfSprite_create();
