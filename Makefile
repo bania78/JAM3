@@ -1,40 +1,34 @@
 ##
-## EPITECH PROJECT, 2021
+## EPITECH PROJECT, 2020
 ## Makefile
 ## File description:
-## Makefile
+## make
 ##
 
-NAME    	= my_runner
+CPPFLAGS	+=	-I ./include/ -W -Wextra -Werror
 
-CC      	= gcc
+LFLAGS		=	-lcsfml-graphics -lcsfml-window -lcsfml-audio -lcsfml-system
 
-RM      	= rm -f
+SRC 	=	init.c \
+        init_png.c \
+        init_text.c \
+        draw.c \
+        png_action.c \
+		main.c \
 
-SRC 		= src/main.c \
-			src/initalize.c \
-			src/jump.c \
-			src/set_all.c \
-			src/random_spawn.c \
-			src/hitboxes.c \
-			src/flag_h.c \
+OBJ 	=	$(SRC:.c=.o)
 
-OBJ 		= $(SRC:.c=.o)
+NAME 	=	my_runner
 
-CFLAGS 		= -W -Wall -Wextra -lcsfml-graphics -lcsfml-system -lcsfml-audio -lcsfml-window
+all:	$(NAME)
 
-all			: $(NAME)
+$(NAME): 	$(OBJ)
+		gcc -o  $(NAME) $(OBJ) $(LFLAGS)
 
-$(NAME)		:	$(OBJ)
-			$(CC) $(SRC) -o $(NAME) lib/my/libmy.a $(CFLAGS)
-			make clean
+clean:
+	rm -f $(OBJ)
 
-clean		:
-			$(RM) $(OBJ)
+fclean:	clean
+	rm -f $(NAME)
 
-fclean		: clean
-			$(RM) $(NAME)
-
-re			: fclean all
-
-.PHONY		: all clean fclean re
+re:	fclean all
