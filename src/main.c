@@ -78,14 +78,14 @@ void game(Wdw w, png p, start st)
             param_menu_start(w, st);
         if (st.start == 1) {
             draw_wdw(w);
-            move_rect(&w.vec.rect1, 1, 1800, 1, p.vecs.i.y, 0);
-            move_rect(&w.vec.rec, 17, 1800, 1, p.vecs.i.y, 0);
-            move_rect(&p.vecs.rec_enemy, 35, 385, 1, p.vecs.i.y, 290);
+            move_rect(&w.vec.rect1, 1, 1800, p.vecs.i.y, 0);
+            move_rect(&w.vec.rec, 17, 1800, p.vecs.i.y, 0);
+            move_rect(&p.vecs.rec_enemy, 35, 385, p.vecs.i.y, 290);
             p.vecs.i.y = draw_png(w, p);
             png_ghost(&p);
             sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
             p = png_jump(p);
-            move_rect(&p.vecs.run, 35, 105, 1, p.vecs.i.y, 0);
+            move_rect(&p.vecs.run, 35, 105, p.vecs.i.y, 0);
         }
         sfRenderWindow_display(w.window);
     }
