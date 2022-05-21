@@ -65,8 +65,7 @@ void game(Wdw w, png p)
         png_ghost(&p);
         sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
         p = png_jump(p);
-        move_rect(&p.vecs.run, 416, 8220);
-        move_rect(&p.vecs.run, 416, 10000);
+        move_rect(&p.vecs.run, 35, 105);
         sfRenderWindow_display(w.window);
     }
     destroy(w, p);

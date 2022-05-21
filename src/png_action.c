@@ -11,11 +11,11 @@ png png_jump(png p)
 {
     if (p.vecs.i.x == 1)
         p.vecs.beginning.y -= 13;
-    if (p.vecs.beginning.y <= 160)
+    if (p.vecs.beginning.y <= 300)
         p.vecs.i.x += 1;
     if (p.vecs.i.x == 6)
         p.vecs.beginning.y += 15;
-    if (p.vecs.beginning.y >= 325)
+    if (p.vecs.beginning.y >= 480)
         p.vecs.i.x = 0;
     sfSprite_setPosition(p.s_png_jump, p.vecs.beginning);
     return (p);
