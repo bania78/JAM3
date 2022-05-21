@@ -16,7 +16,7 @@ void move_rect(sfIntRect *rect, int offset, int max_value)
     clock = sfClock_create();
     while (temp < 0.9) {
         time = sfClock_getElapsedTime(clock);
-        temp = time.microseconds / 10000.0;
+        temp = time.microseconds / 18500.0;
     }
     if (temp > 0.9) {
         rect->left = rect->left + offset;

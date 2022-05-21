@@ -40,11 +40,15 @@ Wdw init_window_vec()
     w.vec.rec.top = 0;
     w.vec.rec.width = 800;
     w.vec.rec.height = 600;
+<<<<<<< HEAD
     sfVideoMode video_mode = {1900, 1167, 32};
+=======
+    sfVideoMode video_mode = {800, 600, 64};
+>>>>>>> 29cf1ae52f0059a793e775f64401cd278083f7cc
     w.window = sfRenderWindow_create(video_mode, "candy-world", sfDefaultStyle | sfResize, NULL);
     w.tbackround = sfTexture_createFromFile("src.pics/Plan_de_travail_0.png", NULL);
     w.sbackround = sfSprite_create();
-    w.tforeground = sfTexture_createFromFile("src.pics/Plan_de_travail_1.png", NULL);
+    w.tforeground = sfTexture_createFromFile("src.pics/Plan_de_travail_66.png", NULL);
     w.sforeground = sfSprite_create();
     sfRenderWindow_setFramerateLimit(w.window, 60);
     sfSprite_setTexture(w.sbackround, w.tbackround, 0);
@@ -56,14 +60,14 @@ Wdw init_window_vec()
 png init()
 {
     png p;
-    p.vecs.scale_png.x = 0.4;
-    p.vecs.scale_png.y = 0.4;
-    p.vecs.beginning.x = 0;
-    p.vecs.beginning.y = 325;
+    p.vecs.scale_png.x = 3;
+    p.vecs.scale_png.y = 3;
+    p.vecs.beginning.x = 50;
+    p.vecs.beginning.y = 480;
     p.vecs.run.left = 0;
-    p.vecs.run.top = 0;
-    p.vecs.run.width = 412;
-    p.vecs.run.height = 500;
+    p.vecs.run.top = 70;
+    p.vecs.run.width = 35;
+    p.vecs.run.height = 37;
     p.vecs.i.x = 0;
     p.vecs.rec_enemy.left = 0;
     p.vecs.rec_enemy.top = 0;
