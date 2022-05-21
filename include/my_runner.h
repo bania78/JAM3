@@ -28,9 +28,11 @@ int png_dead(png *p);
 Wdw init_window_vec();
 Wdw init_text();
 Wdw init_text_bis();
-void game(Wdw w, png p);
+void game(Wdw w, png p, start st);
 void move_rect(sfIntRect *rect, int offset, int max_value);
 void move_enemy(sfIntRect *rect, int offset, int max_value);
+void param_menu_start(Wdw w, start st);
+
 
 void draw_wdw(Wdw w);
 

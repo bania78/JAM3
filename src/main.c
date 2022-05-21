@@ -6,8 +6,9 @@
 */
 
 #include "../include/my_runner.h"
+#include <stdio.h>
 
-sfVector2i events(Wdw w, sfVector2i i)
+sfVector2i events(Wdw w, sfVector2i i, start st)
 {
     while (sfRenderWindow_pollEvent(w.window, &w.event)) {
         if (w.event.type == sfEvtClosed)
@@ -15,6 +16,9 @@ sfVector2i events(Wdw w, sfVector2i i)
         if (w.event.key.code == sfKeySpace) {
             if (i.x == 0)
                 i.x = 1;
+        }
+        if (w.event.type == sfEvtMouseButtonPressed) {
+            st.rectsta = (sfIntRect){210, 0, 210, 96};
         }
     }
     return (i);
@@ -51,22 +55,25 @@ void destroy(Wdw w, png p)
     sfTexture_destroy(w.tbackround);
 }
 
-void game(Wdw w, png p)
+void game(Wdw w, png p, start st)
 {
     sfMusic_play(w.music);
+    st.rectsta = (sfIntRect){0, 0, 210, 96};
+    st.rectqui = (sfIntRect){0, 0, 210, 96};
     while (sfRenderWindow_isOpen(w.window)) {
         sfRenderWindow_clear(w.window, sfBlue);
-        p.vecs.i = events(w, p.vecs.i);
-        draw_wdw(w);
-        move_rect(&w.vec.rect1, 1, 1800);
-        move_rect(&w.vec.rec, 17, 1800);
-        move_rect(&p.vecs.rec_enemy, 600, 7200);
-        p.vecs.i.y = draw_png(w, p);
-        png_ghost(&p);
-        sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
-        p = png_jump(p);
-        move_rect(&p.vecs.run, 416, 8220);
-        move_rect(&p.vecs.run, 416, 10000);
+        p.vecs.i = events(w, p.vecs.i, st);
+        param_menu_start(w, st);
+        //draw_wdw(w);
+        //move_rect(&w.vec.rect1, 1, 1800);
+        //move_rect(&w.vec.rec, 17, 1800);
+        //move_rect(&p.vecs.rec_enemy, 600, 7200);
+        //p.vecs.i.y = draw_png(w, p);
+        //png_ghost(&p);
+        //sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
+        //p = png_jump(p);
+        //move_rect(&p.vecs.run, 416, 8220);
+        //move_rect(&p.vecs.run, 416, 10000);
         sfRenderWindow_display(w.window);
     }
     destroy(w, p);
@@ -78,6 +85,7 @@ int main(int ac, char **argv)
         return (84);
     Wdw w = init_window_vec(w);
     png p = init_png_bis(w);
-    game(w, p);
+    start st;
+    game(w, p, st);
     return (0);
 }

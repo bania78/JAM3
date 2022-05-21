@@ -38,6 +38,18 @@ typedef struct
 
 typedef struct
 {
+    sfIntRect rectsta;
+    sfIntRect rectqui;
+    sfSprite *starbackround;
+    sfTexture *startexbackround;
+    sfSprite *starbutton;
+    sfTexture *startexbutton;
+    sfSprite *quitbutton;
+    sfTexture *quitexbutton;
+}start;
+
+typedef struct
+{
     sfVector2f scale_png;
     sfVector2f beginning;
     sfIntRect run;
