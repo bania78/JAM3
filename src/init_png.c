@@ -14,7 +14,7 @@ png init_png(Wdw w)
     p.s_png_run = sfSprite_create();
     p.t_png_jump = sfTexture_createFromFile("src.pics/Stitch.png", NULL);
     p.s_png_jump = sfSprite_create();
-    p.t_enemy_run = sfTexture_createFromFile("src.pics/enemy.png", NULL);
+    p.t_enemy_run = sfTexture_createFromFile("src.pics/Stitch.png", NULL);
     p.s_enemy_run = sfSprite_create();
     w.clock = sfClock_create();
 
@@ -23,7 +23,7 @@ png init_png(Wdw w)
     sfSprite_setTexture(p.s_enemy_run, p.t_enemy_run, 0);
     sfSprite_scale(p.s_png_run, p.vecs.scale_png);
     sfSprite_scale(p.s_png_jump, p.vecs.scale_png);
-    sfSprite_scale(p.s_enemy_run, p.vecs.scale_enemy);
+    sfSprite_scale(p.s_enemy_run, p.vecs.scale_png);
     sfSprite_setPosition(p.s_png_run, p.vecs.beginning);
     sfSprite_setPosition(p.s_png_jump, p.vecs.beginning);
     sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
