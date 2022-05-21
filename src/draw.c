@@ -6,8 +6,8 @@
 */
 
 #include "../include/my_runner.h"
-
-void move_rect(sfIntRect *rect, int offset, int max_value)
+#include <stdbool.h>
+void move_rect(sfIntRect *rect, int offset, int max_value, bool stop)
 {
     sfClock *clock;
     sfTime time;
