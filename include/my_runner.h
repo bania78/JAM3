@@ -30,7 +30,7 @@ Wdw init_window_vec();
 Wdw init_text();
 Wdw init_text_bis();
 void game(Wdw w, png p, start st);
-void move_rect(sfIntRect *rect, int offset, int max_value, bool stop, int death);
+void move_rect(sfIntRect *rect, int offset, int max_value, bool stop, int death, int base);
 void param_menu_start(Wdw w, start st);
 void draw_wdw(Wdw w);
 
