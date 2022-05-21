@@ -46,6 +46,7 @@ typedef struct
     sfTexture *startexbutton;
     sfSprite *quitbutton;
     sfTexture *quitexbutton;
+    int start;
 }start;
 
 typedef struct

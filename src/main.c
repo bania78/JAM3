@@ -8,7 +8,7 @@
 #include "../include/my_runner.h"
 #include <stdio.h>
 
-sfVector2i events(Wdw w, sfVector2i i, start st)
+sfVector2i events(Wdw w, sfVector2i i, start *st)
 {
     while (sfRenderWindow_pollEvent(w.window, &w.event)) {
         if (w.event.type == sfEvtClosed)
@@ -17,8 +17,9 @@ sfVector2i events(Wdw w, sfVector2i i, start st)
             if (i.x == 0)
                 i.x = 1;
         }
-        if (w.event.type == sfEvtMouseButtonPressed) {
-            st.rectsta = (sfIntRect){210, 0, 210, 96};
+        if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed) {
+            st->rectsta = (sfIntRect){210, 0, 210, 96};
+            st->start = 1;
         }
     }
     return (i);
@@ -58,21 +59,25 @@ void destroy(Wdw w, png p)
 void game(Wdw w, png p, start st)
 {
     sfMusic_play(w.music);
+    st.start = 0;
     st.rectsta = (sfIntRect){0, 0, 210, 96};
     st.rectqui = (sfIntRect){0, 0, 210, 96};
     while (sfRenderWindow_isOpen(w.window)) {
         sfRenderWindow_clear(w.window, sfBlue);
-        p.vecs.i = events(w, p.vecs.i, st);
-        param_menu_start(w, st);
-        //draw_wdw(w);
-        //move_rect(&w.vec.rect1, 1, 1800);
-        //move_rect(&w.vec.rec, 17, 1800);
-        //move_rect(&p.vecs.rec_enemy, 600, 7200);
-        //p.vecs.i.y = draw_png(w, p);
-        //png_ghost(&p);
-        //sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
-        //p = png_jump(p);
-        //move_rect(&p.vecs.run, 35, 105);
+        p.vecs.i = events(w, p.vecs.i, &st);
+        if (st.start == 0)
+            param_menu_start(w, st);
+        if (st.start == 1) {
+            draw_wdw(w);
+            move_rect(&w.vec.rect1, 1, 1800);
+            move_rect(&w.vec.rec, 17, 1800);
+            move_rect(&p.vecs.rec_enemy, 600, 7200);
+            p.vecs.i.y = draw_png(w, p);
+            png_ghost(&p);
+            sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
+            p = png_jump(p);
+            move_rect(&p.vecs.run, 35, 105);
+        }
         sfRenderWindow_display(w.window);
     }
     destroy(w, p);
