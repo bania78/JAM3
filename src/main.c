@@ -10,6 +10,7 @@
 
 sfVector2i events(Wdw w, sfVector2i i, start *st)
 {
+    st->mouse_pos = sfMouse_getPositionRenderWindow(w.window);
     while (sfRenderWindow_pollEvent(w.window, &w.event)) {
         if (w.event.type == sfEvtClosed)
             sfRenderWindow_close(w.window);
@@ -17,9 +18,11 @@ sfVector2i events(Wdw w, sfVector2i i, start *st)
             if (i.x == 0)
                 i.x = 1;
         }
-        if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed) {
-            st->rectsta = (sfIntRect){210, 0, 210, 96};
-            st->start = 1;
+        if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 500 && st->mouse_pos.y < 596) {
+            if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed) {
+                st->rectsta = (sfIntRect){210, 0, 210, 96};
+                st->start = 1;
+            }
         }
     }
     return (i);

@@ -48,6 +48,7 @@ typedef struct
     sfSprite *quitbutton;
     sfTexture *quitexbutton;
     int start;
+    sfVector2i mouse_pos;
 }start;
 
 typedef struct
