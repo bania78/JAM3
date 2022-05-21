@@ -51,7 +51,7 @@ Wdw init_window_vec()
     sfRenderWindow_setFramerateLimit(w.window, 60);
     sfSprite_setTexture(w.sbackround, w.tbackround, 0);
     sfSprite_setTexture(w.sforeground, w.tforeground, 0);
-    w.music = sfMusic_createFromFile("src.sounds/music_game.ogg");
+    w.music = sfMusic_createFromFile("src.sounds/Elvis-Presley-Stuck-on-You-_Lilo-_-Stitch-Soundtrack_.ogg");
     sfSprite_scale(w.sforeground, w.scale_tforeground);
     return (w);
 }
