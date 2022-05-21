@@ -68,10 +68,10 @@ png init()
     p.vecs.run.width = 35;
     p.vecs.run.height = 37;
     p.vecs.i.x = 0;
-    p.vecs.rec_enemy.left = 0;
-    p.vecs.rec_enemy.top = 0;
-    p.vecs.rec_enemy.width = 600;
-    p.vecs.rec_enemy.height = 600;
+    p.vecs.rec_enemy.left = 255;
+    p.vecs.rec_enemy.top = 35;
+    p.vecs.rec_enemy.width = 35;
+    p.vecs.rec_enemy.height = 37;
     p.vecs.scale_enemy.x = 0.3;
     p.vecs.scale_enemy.y = 0.3;
     p.vecs.begin_enemy.x = 2000;

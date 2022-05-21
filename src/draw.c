@@ -7,22 +7,32 @@
 
 #include "../include/my_runner.h"
 #include <stdbool.h>
-void move_rect(sfIntRect *rect, int offset, int max_value, bool stop)
+void move_rect(sfIntRect *rect, int offset, int max_value, bool stop, int death)
 {
     sfClock *clock;
     sfTime time;
     float temp = 0;
+    int left = rect->left;
 
     clock = sfClock_create();
-    while (temp < 0.9) {
-        time = sfClock_getElapsedTime(clock);
-        temp = time.microseconds / 18500.0;
-    }
-    if (temp > 0.9) {
-        rect->left = rect->left + offset;
-        if (rect->left >= max_value)
-            rect->left = 0;
-        sfClock_restart(clock);
+    if (death == 0) {
+        while (temp < 0.9) {
+            time = sfClock_getElapsedTime(clock);
+            temp = time.microseconds / 18500.0;
+        }
+        if (temp > 0.9) {
+            rect->left = rect->left + offset;
+            if (rect->left >= max_value)
+                rect->left = 0;
+            sfClock_restart(clock);
+        }
+    }else {
+        while (temp < 0.9) {
+            time = sfClock_getElapsedTime(clock);
+            temp = time.microseconds / 185000.0;
+        }
+        if (temp > 0.9)
+            sfClock_restart(clock);
     }
 }
 
@@ -30,7 +40,6 @@ void draw_wdw(Wdw w)
 {
     sfRenderWindow_drawSprite(w.window, w.sbackround, NULL);
     sfSprite_setTextureRect(w.sbackround, w.vec.rect1);
-
     sfRenderWindow_drawSprite(w.window, w.sforeground, NULL);
     sfSprite_setTextureRect(w.sforeground, w.vec.rec);
 
@@ -48,7 +57,7 @@ int draw_png(Wdw w, png p)
 {
     sfSprite_setTextureRect(p.s_enemy_run, p.vecs.rec_enemy);
     sfRenderWindow_drawSprite(w.window, p.s_enemy_run, NULL);
-    sfIntRect png = {0, 0, 384, 454};
+    sfIntRect png = {0, 0, 100, 100};
     p.vecs.i.y = collision(p);
     if (p.vecs.i.y != 0) {
         sfSprite_setTextureRect(p.s_png, png);
