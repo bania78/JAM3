@@ -5,7 +5,7 @@
 ** png_action.c
 */
 
-#include "include/my_runner.h"
+#include "../include/my_runner.h"
 
 png png_jump(png p)
 {

@@ -5,7 +5,7 @@
 ** header for init_png.c
 */
 
-#include "include/my_runner.h"
+#include "../include/my_runner.h"
 
 png init_png(Wdw w)
 {

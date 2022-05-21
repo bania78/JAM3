@@ -5,7 +5,7 @@
 ** header for init_text.c
 */
 
-#include "include/my_runner.h"
+#include "../include/my_runner.h"
 
 Wdw init_text()
 {

@@ -5,7 +5,7 @@
 ** header for main.c
 */
 
-#include "include/my_runner.h"
+#include "../include/my_runner.h"
 
 sfVector2i events(Wdw w, sfVector2i i)
 {
