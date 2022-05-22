@@ -79,6 +79,10 @@ png init()
     p.vecs.rec_fpink.top = 35;
     p.vecs.rec_fpink.width = 30;
     p.vecs.rec_fpink.height = 37;
+    p.vecs.rec_fyellow.left = 205;
+    p.vecs.rec_fyellow.top = 180;
+    p.vecs.rec_fyellow.width = 30;
+    p.vecs.rec_fyellow.height = 33;
     p.vecs.scale_enemy.x = 0.3;
     p.vecs.scale_enemy.y = 0.3;
     p.vecs.begin_enemy.y = 800;

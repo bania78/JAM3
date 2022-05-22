@@ -44,6 +44,24 @@ void create_fpink(Wdw *w, png *p, start *st, int y)
     }
 }
 
+void create_fyellow(Wdw *w, png *p, start *st, int y)
+{
+    sfTexture *t_fyellow = sfTexture_createFromFile("src.pics/Stitch.png", NULL);
+    sfSprite *s_fyellow = sfSprite_create();
+
+    sfSprite_setTexture(s_fyellow, t_fyellow, 0);
+    sfSprite_scale(s_fyellow,p->vecs.scale_png);
+    sfSprite_setPosition(s_fyellow, (sfVector2f){y, 800});
+    sfSprite_setTextureRect(s_fyellow, p->vecs.rec_fyellow);
+    sfRenderWindow_drawSprite(w->window, s_fyellow, NULL);
+    if (p->vecs.beginning.x >= y - 70 && p->vecs.beginning.x <= y + 100 &&
+        p->vecs.beginning.y >= 800 - 50
+        && p->vecs.beginning.x <= 800 + 50) {
+        p->vecs.i.y++;
+        st->start = 0;
+    }
+}
+
 void set_pos_enemy(Wdw *w, png *p, start *st)
 {
     for (int i = 0; w->map[i] != '9'; i++) {
