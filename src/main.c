@@ -87,8 +87,10 @@ void game(Wdw w, png p, start st)
     while (sfRenderWindow_isOpen(w.window)) {
         sfRenderWindow_clear(w.window, sfBlue);
         p.vecs.i = events(w, p.vecs.i, &st);
-        if (st.start == 0)
+        if (st.start == 0) {
+            p = init_png_bis(w);
             param_menu_start(w, st);
+        }
         if (st.start == 3)
             draw_pres(&w, &st);
         if (st.start == 1) {
@@ -100,7 +102,7 @@ void game(Wdw w, png p, start st)
             png_ghost(&p, &st);
             sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
             p = png_jump(p);
-            set_pos_enemy(&w, &p);
+            set_pos_enemy(&w, &p, &st);
             move_rect(&p.vecs.run, 35, 105, p.vecs.i.y, 0);
         }
         sfRenderWindow_display(w.window);

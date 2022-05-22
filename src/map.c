@@ -8,7 +8,7 @@
 #include "../include/my_runner.h"
 #include <stdio.h>
 
-void create_enemie(Wdw *w, png *p, int y)
+void create_enemie(Wdw *w, png *p, start *st, int y)
 {
     sfTexture *t_enemy = sfTexture_createFromFile("src.pics/Stitch.png", NULL);
     sfSprite *s_enemy = sfSprite_create();
@@ -22,14 +22,15 @@ void create_enemie(Wdw *w, png *p, int y)
         p->vecs.beginning.y >= 800 - 50
         && p->vecs.beginning.x <= 800 + 50) {
         p->vecs.i.y++;
+        st->start = 0;
     }
 }
 
-void set_pos_enemy(Wdw *w, png *p)
+void set_pos_enemy(Wdw *w, png *p, start *st)
 {
     for (int i = 0; w->map[i] != '9'; i++) {
         if (w->map[i] == '1')
-            create_enemie(w, p, (((i - p->pos_play) * 80) - (p->compute * 10)));
+            create_enemie(w, p, st, (((i - p->pos_play) * 80) - (p->compute * 10)));
     }
 }
 
