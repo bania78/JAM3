@@ -26,6 +26,24 @@ void create_enemie(Wdw *w, png *p, start *st, int y)
     }
 }
 
+void create_fpink(Wdw *w, png *p, start *st, int y)
+{
+    sfTexture *t_fpink = sfTexture_createFromFile("src.pics/Stitch.png", NULL);
+    sfSprite *s_fpink = sfSprite_create();
+
+    sfSprite_setTexture(s_fpink, t_fpink, 0);
+    sfSprite_scale(s_fpink,p->vecs.scale_png);
+    sfSprite_setPosition(s_fpink, (sfVector2f){y, 800});
+    sfSprite_setTextureRect(s_fpink, p->vecs.rec_fpink);
+    sfRenderWindow_drawSprite(w->window, s_fpink, NULL);
+    if (p->vecs.beginning.x >= y - 70 && p->vecs.beginning.x <= y + 100 &&
+        p->vecs.beginning.y >= 800 - 50
+        && p->vecs.beginning.x <= 800 + 50) {
+        p->vecs.i.y++;
+        st->start = 0;
+    }
+}
+
 void set_pos_enemy(Wdw *w, png *p, start *st)
 {
     for (int i = 0; w->map[i] != '9'; i++) {

@@ -59,6 +59,8 @@ typedef struct
     sfVector2f beginning;
     sfIntRect run;
     sfIntRect rec_enemy;
+    sfIntRect rec_fpink;
+    sfIntRect rec_fyellow;
     sfVector2f scale_enemy;
     sfVector2f begin_enemy;
     sfVector2f move_enemy;
@@ -74,6 +76,10 @@ typedef struct
     sfTexture *t_png_jump;
     sfSprite *s_enemy_run;
     sfTexture *t_enemy_run;
+    sfSprite *s_fpink;
+    sfTexture *t_fpink;
+    sfSprite *s_fyellow;
+    sfTexture *t_fyellow;
     sfSprite *s_png;
     sfTexture *t_png;
     sfSprite *s_over;
