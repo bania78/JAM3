@@ -94,7 +94,7 @@ void game(Wdw w, png p, start st)
         if (st.start == 1) {
             draw_wdw(w);
             move_rect(&w.vec.rect1, 1, 1800, p.vecs.i.y, 0);
-            move_rect(&w.vec.rec, 17, 5300, p.vecs.i.y, 0);
+            move_rect(&w.vec.rec, 17, 500, p.vecs.i.y, 0);
             move_rect(&p.vecs.rec_enemy, 35, 385, p.vecs.i.y, 290);
             p.vecs.i.y = draw_png(w, p);
             png_ghost(&p, &st);
