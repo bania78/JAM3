@@ -21,7 +21,7 @@ SRC 	=	src/init.c \
 
 OBJ 	=	$(SRC:.c=.o)
 
-NAME 	=	my_runner
+NAME 	=	stitch_save_family
 
 all:	$(NAME)
 

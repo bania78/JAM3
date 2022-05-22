@@ -45,7 +45,7 @@ Wdw init_window_vec()
     w.scale_background.x = 3;
     w.scale_background.y = 3;
     sfVideoMode video_mode = {1900, 1167, 32};
-    w.window = sfRenderWindow_create(video_mode, "candy-world", sfDefaultStyle | sfResize, NULL);
+    w.window = sfRenderWindow_create(video_mode, "stitch save family", sfDefaultStyle | sfResize, NULL);
     w.tbackround = sfTexture_createFromFile("src.pics/Plan_de_travail_0.png", NULL);
     w.sbackround = sfSprite_create();
     w.tforeground = sfTexture_createFromFile("src.pics/background.png", NULL);
