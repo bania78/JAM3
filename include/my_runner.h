@@ -40,6 +40,8 @@ void open_map(Wdw *w);
 void set_pos_enemy(Wdw *w, png *p, start *st);
 void draw_pres(Wdw *w, start *st);
 sfText *my_text(char *text_to_write, int size);
+void draw_victory(Wdw w, start st);
+
 
 
 #endif //MY_RUNNER_H

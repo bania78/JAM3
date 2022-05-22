@@ -32,6 +32,8 @@ void set_pos_enemy(Wdw *w, png *p, start *st)
         if (w->map[i] == '1')
             create_enemie(w, p, st, (((i - p->pos_play) * 80) - (p->compute * 10)));
     }
+    if (w->map[p->pos_play] == '9')
+        st->start = 2;
 }
 
 void open_map(Wdw *w)

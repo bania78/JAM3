@@ -91,6 +91,8 @@ void game(Wdw w, png p, start st)
             p = init_png_bis(w);
             param_menu_start(w, st);
         }
+        if (st.start == 2)
+            draw_victory(w, st);
         if (st.start == 3)
             draw_pres(&w, &st);
         if (st.start == 1) {
