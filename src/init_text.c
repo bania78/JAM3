@@ -10,11 +10,11 @@
 Wdw init_text()
 {
     Wdw w = init_text_bis();
-    sfVector2f pos_text = {1637.0, 0.0};
+    sfVector2f pos_text = {1600.0, 0.0};
     sfVector2f pos_score = {1470.0,0.0};
-    char str[] = "score :";
-    w.str_nb = "0000000000";
-    char *score = malloc(sizeof(char) * 7);
+    char str[] = "score :  ";
+    w.str_nb = "  00000000";
+    char *score = malloc(sizeof(char) * 9);
     w.nb_score = malloc(sizeof(char) * 10);
 
     for (int i = 0 ; i < 7; i++)
