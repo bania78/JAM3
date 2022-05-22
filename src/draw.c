@@ -7,12 +7,11 @@
 
 #include "../include/my_runner.h"
 #include <stdbool.h>
-void move_rect(sfIntRect *rect, int offset, int max_value, bool stop, int death)
+void move_rect(sfIntRect *rect, int offset, int max_value, int death, int base)
 {
     sfClock *clock;
     sfTime time;
     float temp = 0;
-    int left = rect->left;
 
     clock = sfClock_create();
     if (death == 0) {
@@ -23,7 +22,7 @@ void move_rect(sfIntRect *rect, int offset, int max_value, bool stop, int death)
         if (temp > 0.9) {
             rect->left = rect->left + offset;
             if (rect->left >= max_value)
-                rect->left = 0;
+                rect->left = base;
             sfClock_restart(clock);
         }
     }else {

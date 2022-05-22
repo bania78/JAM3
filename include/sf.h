@@ -21,7 +21,8 @@ typedef struct
     sfTexture *tbackround;
     sfSprite *sforeground;
     sfTexture *tforeground;
-    sfVector2f scale_tforeground;
+    sfVector2f scale_foreground;
+    sfVector2f scale_background;
     sfSprite *slife;
     sfTexture *tlife;
     sfSprite *slife2;
