@@ -37,8 +37,14 @@ sfVector2i events(Wdw w, sfVector2i i, start *st)
 void png_ghost(png *p)
 {
     if (p->vecs.i.y == 0) {
-        if (p->vecs.begin_enemy.x > - 100)
+        if (p->vecs.begin_enemy.x > - 100) {
             p->vecs.begin_enemy.x -= 10;
+            p->compute++;
+            if (p->compute == 8) {
+                p->pos_play++;
+                p->compute = 0;
+            }
+        }
         else
             p->vecs.begin_enemy.x = 2000;
     } else
@@ -71,12 +77,14 @@ void game(Wdw w, png p, start st)
     st.start = 0;
     st.rectsta = (sfIntRect){0, 0, 210, 96};
     st.rectqui = (sfIntRect){0, 0, 210, 96};
+    open_map(&w);
     while (sfRenderWindow_isOpen(w.window)) {
         sfRenderWindow_clear(w.window, sfBlue);
         p.vecs.i = events(w, p.vecs.i, &st);
         if (st.start == 0)
             param_menu_start(w, st);
         if (st.start == 1) {
+            set_pos_enemy(&w, &p);
             draw_wdw(w);
             move_rect(&w.vec.rect1, 1, 1800, p.vecs.i.y, 0);
             move_rect(&w.vec.rec, 17, 1800, p.vecs.i.y, 0);

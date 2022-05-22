@@ -36,6 +36,7 @@ typedef struct
     char *str_nb;
     sfFont *F_nb_score;
     sfText *T_nb_score;
+    char *map;
 }Wdw;
 
 typedef struct
@@ -78,4 +79,6 @@ typedef struct
     sfSprite *s_over;
     sfTexture *t_over;
     vec_png vecs;
+    int pos_play;
+    int compute;
 }png;

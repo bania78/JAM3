@@ -16,6 +16,7 @@ SRC 	=	src/init.c \
         	src/png_action.c \
 			src/main.c \
 			src/menu_start.c \
+			src/map.c \
 
 OBJ 	=	$(SRC:.c=.o)
 

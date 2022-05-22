@@ -15,6 +15,9 @@
 #include "sf.h"
 #include <stdlib.h>
 #include <stdbool.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 Wdw init_window_vec();
 png init_png(Wdw w);
@@ -33,5 +36,7 @@ void game(Wdw w, png p, start st);
 void move_rect(sfIntRect *rect, int offset, int max_value, int death, int base);
 void param_menu_start(Wdw w, start st);
 void draw_wdw(Wdw w);
+void open_map(Wdw *w);
+void set_pos_enemy(Wdw *w, png *p);
 
 #endif //MY_RUNNER_H
