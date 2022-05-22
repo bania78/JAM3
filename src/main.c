@@ -107,6 +107,8 @@ void game(Wdw w, png p, start st)
     st.start = 0;
     st.rectsta = (sfIntRect){0, 0, 210, 96};
     st.rectqui = (sfIntRect){0, 0, 210, 96};
+    st.yellow = 0;
+    st.pink = 0;
     while (sfRenderWindow_isOpen(w.window)) {
         sfRenderWindow_clear(w.window, sfBlue);
         p.vecs.i = events(&w, p.vecs.i, &st);

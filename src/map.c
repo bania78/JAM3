@@ -36,12 +36,12 @@ void create_fpink(Wdw *w, png *p, start *st, int y)
     sfSprite_setPosition(s_fpink, (sfVector2f){y, 800});
     sfSprite_setTextureRect(s_fpink, p->vecs.rec_fpink);
     sfRenderWindow_drawSprite(w->window, s_fpink, NULL);
-    //if (p->vecs.beginning.x >= y - 70 && p->vecs.beginning.x <= y + 100 &&
-    //    p->vecs.beginning.y >= 800 - 50
-    //    && p->vecs.beginning.x <= 800 + 50) {
-    //    p->vecs.i.y++;
-    //    st->start = 0;
-    //}
+    if (p->vecs.beginning.x >= y - 70 && p->vecs.beginning.x <= y + 100 &&
+        p->vecs.beginning.y >= 800 - 50
+        && p->vecs.beginning.x <= 800 + 50) {
+        p->vecs.i.y++;
+        st->pink = 1;
+    }
 }
 
 void create_fyellow(Wdw *w, png *p, start *st, int y)
@@ -54,12 +54,12 @@ void create_fyellow(Wdw *w, png *p, start *st, int y)
     sfSprite_setPosition(s_fyellow, (sfVector2f){y, 800});
     sfSprite_setTextureRect(s_fyellow, p->vecs.rec_fyellow);
     sfRenderWindow_drawSprite(w->window, s_fyellow, NULL);
-    //if (p->vecs.beginning.x >= y - 70 && p->vecs.beginning.x <= y + 100 &&
-    //    p->vecs.beginning.y >= 800 - 50
-    //    && p->vecs.beginning.x <= 800 + 50) {
-    //    p->vecs.i.y++;
-    //    st->start = 0;
-    //}
+    if (p->vecs.beginning.x >= y - 70 && p->vecs.beginning.x <= y + 100 &&
+        p->vecs.beginning.y >= 800 - 50
+        && p->vecs.beginning.x <= 800 + 50) {
+        p->vecs.i.y++;
+        st->yellow = 1;
+    }
 }
 
 void set_pos_enemy(Wdw *w, png *p, start *st)
@@ -67,9 +67,9 @@ void set_pos_enemy(Wdw *w, png *p, start *st)
     for (int i = 0; w->map[i] != '9'; i++) {
         if (w->map[i] == '1')
             create_enemie(w, p, st, (((i - p->pos_play) * 80) - (p->compute * 10)));
-        if (w->map[i] == '4')
+        if (w->map[i] == '4' && st->pink != 1)
             create_fpink(w, p, st, (((i - p->pos_play) * 80) - (p->compute * 10)));
-        if (w->map[i] == '3')
+        if (w->map[i] == '3' && st->yellow != 1)
             create_fyellow(w, p, st, (((i - p->pos_play) * 80) - (p->compute * 10)));
     }
     if (w->map[p->pos_play] == '9')

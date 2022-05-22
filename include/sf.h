@@ -55,6 +55,8 @@ typedef struct
     sfTexture *quitexbutton;
     int start;
     sfVector2i mouse_pos;
+    int yellow;
+    int pink;
 }start;
 
 typedef struct
