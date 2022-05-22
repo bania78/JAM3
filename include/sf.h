@@ -15,6 +15,25 @@ typedef struct
 
 typedef struct
 {
+    sfIntRect rectsta;
+    sfIntRect rectgre;
+    sfIntRect rectqui;
+    sfSprite *starbackround;
+    sfTexture *startexbackround;
+    sfSprite *starbutton;
+    sfSprite *grebutton;
+    sfTexture *gretexbutton;
+    sfTexture *startexbutton;
+    sfSprite *quitbutton;
+    sfTexture *quitexbutton;
+    int start;
+    sfVector2i mouse_pos;
+    int yellow;
+    int pink;
+}start;
+
+typedef struct
+{
     sfRenderWindow *window;
     sfEvent event;
     sfSprite *sbackround;
@@ -38,26 +57,10 @@ typedef struct
     sfText *T_nb_score;
     char *map;
     char *path_map;
+    start start;
 }Wdw;
 
-typedef struct
-{
-    sfIntRect rectsta;
-    sfIntRect rectgre;
-    sfIntRect rectqui;
-    sfSprite *starbackround;
-    sfTexture *startexbackround;
-    sfSprite *starbutton;
-    sfSprite *grebutton;
-    sfTexture *gretexbutton;
-    sfTexture *startexbutton;
-    sfSprite *quitbutton;
-    sfTexture *quitexbutton;
-    int start;
-    sfVector2i mouse_pos;
-    int yellow;
-    int pink;
-}start;
+
 
 typedef struct
 {

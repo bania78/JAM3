@@ -42,6 +42,7 @@ void create_fpink(Wdw *w, png *p, start *st, int y)
         p->vecs.i.y++;
         st->pink = 1;
     }
+
 }
 
 void create_fyellow(Wdw *w, png *p, start *st, int y)

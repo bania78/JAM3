@@ -133,7 +133,6 @@ void game(Wdw w, png p, start st)
             p = png_jump(p);
             set_pos_enemy(&w, &p, &st);
             move_rect(&p.vecs.run, 35, 105, p.vecs.i.y, 0);
-
         }
         sfRenderWindow_display(w.window);
     }

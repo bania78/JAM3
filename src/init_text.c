@@ -11,16 +11,19 @@ Wdw init_text()
 {
     Wdw w = init_text_bis();
     sfVector2f pos_text = {1600.0, 0.0};
-    sfVector2f pos_score = {1470.0,0.0};
-    char str[] = "score :  ";
-    w.str_nb = "  00000000";
-    char *score = malloc(sizeof(char) * 9);
-    w.nb_score = malloc(sizeof(char) * 10);
+    sfVector2f pos_score = {1270.0,0.0};
+    char str[] = "Family saved :";
+    char *score = malloc(sizeof(char) * 14);
+    w.nb_score = malloc(sizeof(char) * 1);
 
-    for (int i = 0 ; i < 7; i++)
+    for (int i = 0 ; i < 14; i++)
         score[i] = str[i];
-    for (int f = 0; f < 11; f++)
-        w.nb_score[f] = w.str_nb[f];
+    if (w.start.yellow == 1)
+        w.nb_score[0] = '1';
+    else if (w.start.pink == 1)
+        w.nb_score[0] = '2';
+    else
+        w.nb_score[0] = '0';
     sfText_setFont(w.Tscore, w.Fscore);
     sfText_setString(w.Tscore, score);
     sfText_setFont(w.T_nb_score, w.F_nb_score);
