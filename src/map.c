@@ -18,6 +18,11 @@ void create_enemie(Wdw *w, png *p, int y)
     sfSprite_setPosition(s_enemy, (sfVector2f){y, 800});
     sfSprite_setTextureRect(s_enemy, p->vecs.rec_enemy);
     sfRenderWindow_drawSprite(w->window, s_enemy, NULL);
+    if (p->vecs.beginning.x >= y - 70 && p->vecs.beginning.x <= y + 100 &&
+        p->vecs.beginning.y >= 800 - 50
+        && p->vecs.beginning.x <= 800 + 50) {
+        p->vecs.i.y++;
+    }
 }
 
 void set_pos_enemy(Wdw *w, png *p)
