@@ -37,7 +37,7 @@ sfVector2i events(Wdw w, sfVector2i i, start *st)
 void png_ghost(png *p)
 {
     if (p->vecs.i.y == 0) {
-        if (p->vecs.begin_enemy.x > - 100) {
+        if (p->vecs.begin_enemy.x < 100) {
             p->vecs.begin_enemy.x -= 10;
             p->compute++;
             if (p->compute == 8) {
@@ -46,7 +46,7 @@ void png_ghost(png *p)
             }
         }
         else
-            p->vecs.begin_enemy.x = 2000;
+            p->vecs.begin_enemy.x = -100;
     } else
        png_dead(p);
 }
@@ -84,7 +84,6 @@ void game(Wdw w, png p, start st)
         if (st.start == 0)
             param_menu_start(w, st);
         if (st.start == 1) {
-            set_pos_enemy(&w, &p);
             draw_wdw(w);
             move_rect(&w.vec.rect1, 1, 1800, p.vecs.i.y, 0);
             move_rect(&w.vec.rec, 17, 1800, p.vecs.i.y, 0);
@@ -93,6 +92,7 @@ void game(Wdw w, png p, start st)
             png_ghost(&p);
             sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
             p = png_jump(p);
+            set_pos_enemy(&w, &p);
             move_rect(&p.vecs.run, 35, 105, p.vecs.i.y, 0);
         }
         sfRenderWindow_display(w.window);

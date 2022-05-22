@@ -78,7 +78,7 @@ png init()
     p.vecs.scale_enemy.x = 0.3;
     p.vecs.scale_enemy.y = 0.3;
     p.vecs.begin_enemy.y = 800;
-    p.vecs.begin_enemy.x = 0;
+    p.vecs.begin_enemy.x = -100;
     p.pos_play = 0;
     p.compute = 0;
     return (p);

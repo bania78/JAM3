@@ -37,7 +37,7 @@ int png_dead(png *p)
     int c = 0;
     if (p->vecs.i.y == 1) {
         c = 1;
-        p->vecs.begin_enemy.x = 1000;
+        p->vecs.begin_enemy.x = -100;
         sfSprite_setPosition(p->s_enemy_run, p->vecs.begin_enemy);
     } else {
         c = 0;
