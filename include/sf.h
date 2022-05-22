@@ -37,15 +37,19 @@ typedef struct
     sfFont *F_nb_score;
     sfText *T_nb_score;
     char *map;
+    char *path_map;
 }Wdw;
 
 typedef struct
 {
     sfIntRect rectsta;
+    sfIntRect rectgre;
     sfIntRect rectqui;
     sfSprite *starbackround;
     sfTexture *startexbackround;
     sfSprite *starbutton;
+    sfSprite *grebutton;
+    sfTexture *gretexbutton;
     sfTexture *startexbutton;
     sfSprite *quitbutton;
     sfTexture *quitexbutton;

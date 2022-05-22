@@ -78,12 +78,12 @@ void set_pos_enemy(Wdw *w, png *p, start *st)
 
 void open_map(Wdw *w)
 {
-    int fd = open("map/map.txt", O_RDONLY);
+    int fd = open(w->path_map, O_RDONLY);
     struct stat size;
     char *buff;
     int len;
 
-    stat("map/map.txt", &size);
+    stat(w->path_map, &size);
     buff = malloc(sizeof(char) * (size.st_size + 1));
     len = read(fd, buff, size.st_size);
     buff[len] = '\0';

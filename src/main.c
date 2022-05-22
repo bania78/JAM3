@@ -8,33 +8,57 @@
 #include "../include/my_runner.h"
 #include <stdio.h>
 
-sfVector2i events(Wdw w, sfVector2i i, start *st)
+sfVector2i events(Wdw *w, sfVector2i i, start *st)
 {
-    st->mouse_pos = sfMouse_getPositionRenderWindow(w.window);
-    while (sfRenderWindow_pollEvent(w.window, &w.event)) {
-        if (w.event.type == sfEvtClosed)
-            sfRenderWindow_close(w.window);
-        if (w.event.key.code == sfKeySpace) {
+    st->mouse_pos = sfMouse_getPositionRenderWindow(w->window);
+    while (sfRenderWindow_pollEvent(w->window, &w->event)) {
+        if (w->event.type == sfEvtClosed)
+            sfRenderWindow_close(w->window);
+        if (w->event.key.code == sfKeySpace) {
             if (i.x == 0)
                 i.x = 1;
         }
         if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 500 && st->mouse_pos.y < 596) {
-            if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed)
+            if (st->start == 0 && w->event.type == sfEvtMouseButtonPressed)
                 st->rectsta = (sfIntRect){210, 0, 210, 96};
-            if (st->start == 0 && w.event.type == sfEvtMouseButtonReleased)
+            if (st->start == 0 && w->event.type == sfEvtMouseButtonReleased)
                 st->start = 3;
         }
         if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 650 && st->mouse_pos.y < 746) {
-            if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed)
+            if (st->start == 0 && w->event.type == sfEvtMouseButtonPressed)
                 st->rectqui = (sfIntRect){210, 0, 210, 96};
-            if (st->start == 0 && w.event.type == sfEvtMouseButtonReleased)
-                sfRenderWindow_close(w.window);
+            if (st->start == 0 && w->event.type == sfEvtMouseButtonReleased)
+                sfRenderWindow_close(w->window);
         }
         if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 700 && st->mouse_pos.y < 796) {
-            if (st->start == 3 && w.event.type == sfEvtMouseButtonPressed)
+            if (st->start == 3 && w->event.type == sfEvtMouseButtonPressed)
                 st->rectsta = (sfIntRect){210, 0, 210, 96};
-            if (st->start == 3 && w.event.type == sfEvtMouseButtonReleased)
+            if (st->start == 3 && w->event.type == sfEvtMouseButtonReleased) {
                 st->start = 1;
+                w->path_map = malloc(sizeof(char) * 11);
+                w->path_map = "map/map.txt";
+                open_map(w);
+            }
+        }
+        if (st->mouse_pos.x > 550 && st->mouse_pos.x < 760 && st->mouse_pos.y > 700 && st->mouse_pos.y < 796) {
+            if (st->start == 3 && w->event.type == sfEvtMouseButtonPressed)
+                st->rectsta = (sfIntRect){210, 0, 210, 96};
+            if (st->start == 3 && w->event.type == sfEvtMouseButtonReleased) {
+                w->path_map = malloc(sizeof(char) * 12);
+                st->start = 1;
+                w->path_map = "map/map1.txt";
+                open_map(w);
+            }
+        }
+        if (st->mouse_pos.x > 1150 && st->mouse_pos.x < 1360 && st->mouse_pos.y > 700 && st->mouse_pos.y < 796) {
+            if (st->start == 3 && w->event.type == sfEvtMouseButtonPressed)
+                st->rectsta = (sfIntRect){210, 0, 210, 96};
+            if (st->start == 3 && w->event.type == sfEvtMouseButtonReleased) {
+                w->path_map = malloc(sizeof(char) * 12);
+                st->start = 1;
+                w->path_map = "map/map2.txt";
+                open_map(w);
+            }
         }
     }
     return (i);
@@ -83,10 +107,9 @@ void game(Wdw w, png p, start st)
     st.start = 0;
     st.rectsta = (sfIntRect){0, 0, 210, 96};
     st.rectqui = (sfIntRect){0, 0, 210, 96};
-    open_map(&w);
     while (sfRenderWindow_isOpen(w.window)) {
         sfRenderWindow_clear(w.window, sfBlue);
-        p.vecs.i = events(w, p.vecs.i, &st);
+        p.vecs.i = events(&w, p.vecs.i, &st);
         if (st.start == 0) {
             p = init_png_bis(w);
             param_menu_start(w, st);
@@ -101,7 +124,7 @@ void game(Wdw w, png p, start st)
             move_rect(&w.vec.rec, 17, 500, p.vecs.i.y, 0);
             move_rect(&p.vecs.rec_enemy, 35, 385, p.vecs.i.y, 290);
             move_rect(&p.vecs.rec_fpink, 30, 185, p.vecs.i.y, 105);
-           move_rect(&p.vecs.rec_fyellow, 30, 295, p.vecs.i.y, 205);
+            move_rect(&p.vecs.rec_fyellow, 30, 295, p.vecs.i.y, 205);
             p.vecs.i.y = draw_png(w, p);
             png_ghost(&p, &st);
             sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);

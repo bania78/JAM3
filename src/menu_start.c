@@ -22,7 +22,7 @@ sfText *my_text(char *text_to_write, int size)
 
 void draw_victory(Wdw w, start st)
 {
-    char *text_to_write = "Next";
+    char *text_to_write = "Quit";
     sfVector2f vector = {1325, 615 };
 
     st.startexbackround = sfTexture_createFromFile("src.pics/victory.jpg", NULL);
