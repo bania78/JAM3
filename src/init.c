@@ -48,7 +48,7 @@ Wdw init_window_vec()
     w.window = sfRenderWindow_create(video_mode, "candy-world", sfDefaultStyle | sfResize, NULL);
     w.tbackround = sfTexture_createFromFile("src.pics/Plan_de_travail_0.png", NULL);
     w.sbackround = sfSprite_create();
-    w.tforeground = sfTexture_createFromFile("src.pics/Plan_de_travail_66.png", NULL);
+    w.tforeground = sfTexture_createFromFile("src.pics/background.png", NULL);
     w.sforeground = sfSprite_create();
     sfRenderWindow_setFramerateLimit(w.window, 60);
     sfSprite_setTexture(w.sbackround, w.tbackround, 0);

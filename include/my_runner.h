@@ -22,7 +22,7 @@
 Wdw init_window_vec();
 png init_png(Wdw w);
 png init();
-void png_ghost(png *p);
+void png_ghost(png *p, start *st);
 png init_png_bis(Wdw w);
 png png_jump(png p);
 int draw_png(Wdw w, png p);
@@ -37,6 +37,9 @@ void move_rect(sfIntRect *rect, int offset, int max_value, int death, int base);
 void param_menu_start(Wdw w, start st);
 void draw_wdw(Wdw w);
 void open_map(Wdw *w);
-void set_pos_enemy(Wdw *w, png *p);
+void set_pos_enemy(Wdw *w, png *p, start *st);
+void draw_pres(Wdw *w, start *st);
+sfText *my_text(char *text_to_write, int size);
+
 
 #endif //MY_RUNNER_H

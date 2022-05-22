@@ -22,7 +22,7 @@ sfVector2i events(Wdw w, sfVector2i i, start *st)
             if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed)
                 st->rectsta = (sfIntRect){210, 0, 210, 96};
             if (st->start == 0 && w.event.type == sfEvtMouseButtonReleased)
-                st->start = 1;
+                st->start = 3;
         }
         if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 650 && st->mouse_pos.y < 746) {
             if (st->start == 0 && w.event.type == sfEvtMouseButtonPressed)
@@ -30,11 +30,17 @@ sfVector2i events(Wdw w, sfVector2i i, start *st)
             if (st->start == 0 && w.event.type == sfEvtMouseButtonReleased)
                 sfRenderWindow_close(w.window);
         }
+        if (st->mouse_pos.x > 850 && st->mouse_pos.x < 1060 && st->mouse_pos.y > 700 && st->mouse_pos.y < 796) {
+            if (st->start == 3 && w.event.type == sfEvtMouseButtonPressed)
+                st->rectsta = (sfIntRect){210, 0, 210, 96};
+            if (st->start == 3 && w.event.type == sfEvtMouseButtonReleased)
+                st->start = 1;
+        }
     }
     return (i);
 }
 
-void png_ghost(png *p)
+void png_ghost(png *p, start *st)
 {
     if (p->vecs.i.y == 0) {
         if (p->vecs.begin_enemy.x < 100) {
@@ -48,7 +54,7 @@ void png_ghost(png *p)
         else
             p->vecs.begin_enemy.x = -100;
     } else
-       png_dead(p);
+       st->start = png_dead(p);
 }
 
 void destroy(Wdw w, png p)
@@ -81,18 +87,22 @@ void game(Wdw w, png p, start st)
     while (sfRenderWindow_isOpen(w.window)) {
         sfRenderWindow_clear(w.window, sfBlue);
         p.vecs.i = events(w, p.vecs.i, &st);
-        if (st.start == 0)
+        if (st.start == 0) {
+            p = init_png_bis(w);
             param_menu_start(w, st);
+        }
+        if (st.start == 3)
+            draw_pres(&w, &st);
         if (st.start == 1) {
             draw_wdw(w);
             move_rect(&w.vec.rect1, 1, 1800, p.vecs.i.y, 0);
-            move_rect(&w.vec.rec, 17, 1800, p.vecs.i.y, 0);
+            move_rect(&w.vec.rec, 17, 500, p.vecs.i.y, 0);
             move_rect(&p.vecs.rec_enemy, 35, 385, p.vecs.i.y, 290);
             p.vecs.i.y = draw_png(w, p);
-            png_ghost(&p);
+            png_ghost(&p, &st);
             sfSprite_setPosition(p.s_enemy_run, p.vecs.begin_enemy);
             p = png_jump(p);
-            set_pos_enemy(&w, &p);
+            set_pos_enemy(&w, &p, &st);
             move_rect(&p.vecs.run, 35, 105, p.vecs.i.y, 0);
         }
         sfRenderWindow_display(w.window);
