@@ -61,6 +61,8 @@ void create_fyellow(Wdw *w, png *p, start *st, int y)
         p->vecs.i.y++;
         st->yellow = 1;
     }
+
+
 }
 
 void set_pos_enemy(Wdw *w, png *p, start *st)
@@ -73,6 +75,13 @@ void set_pos_enemy(Wdw *w, png *p, start *st)
         if (w->map[i] == '3' && st->yellow != 1)
             create_fyellow(w, p, st, (((i - p->pos_play) * 80) - (p->compute * 10)));
     }
+    if (st->yellow == 1)
+        w->nb_score[0] = '1';
+    else if (st->pink == 1)
+        w->nb_score[0] = '2';
+    else
+        w->nb_score[0] = '0';
+    sfText_setString(w->T_nb_score, w->nb_score);
     if (w->map[p->pos_play] == '9')
         st->start = 2;
 }

@@ -67,12 +67,5 @@ int draw_png(Wdw w, png p)
             sfRenderWindow_drawSprite(w.window, p.s_png_jump, NULL);
         }
     }
-    if (w.start.yellow == 1)
-        w.nb_score[0] = '1';
-    else if (w.start.pink == 1)
-        w.nb_score[0] = '2';
-    else
-        w.nb_score[0] = '0';
-    sfText_setString(w.T_nb_score, w.nb_score);
     return (p.vecs.i.y);
 }
