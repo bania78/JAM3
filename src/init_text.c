@@ -14,16 +14,12 @@ Wdw init_text()
     sfVector2f pos_score = {1270.0,0.0};
     char str[] = "Family saved :";
     char *score = malloc(sizeof(char) * 14);
-    w.nb_score = malloc(sizeof(char) * 1);
+    w.nb_score = malloc(sizeof(char) * 2);
 
     for (int i = 0 ; i < 14; i++)
         score[i] = str[i];
-    if (w.start.yellow == 1)
-        w.nb_score[0] = '1';
-    else if (w.start.pink == 1)
-        w.nb_score[0] = '2';
-    else
-        w.nb_score[0] = '0';
+
+    w.nb_score[1] = '\0';
     sfText_setFont(w.Tscore, w.Fscore);
     sfText_setString(w.Tscore, score);
     sfText_setFont(w.T_nb_score, w.F_nb_score);
